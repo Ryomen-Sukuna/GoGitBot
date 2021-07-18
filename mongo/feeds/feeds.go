@@ -1,6 +1,8 @@
 package feeds
 
 import (
+	"strings"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 
@@ -64,6 +66,24 @@ func GetFeedsForChat(chatId int64) ([]Feed, error) {
 	}
 
 	return feeds, find.All(mongo2.Ctx, &feeds)
+}
+
+func HasFeed(chatId int64, url string) bool {
+	url = strings.Replace(url, "http://", "", 1)
+	url = strings.Replace(url, "https://", "", 1)
+
+	feeds, _ := GetFeedsForChat(chatId)
+
+	for _, feed := range feeds {
+		feed.Url = strings.Replace(feed.Url, "http://", "", 1)
+		feed.Url = strings.Replace(feed.Url, "https://", "", 1)
+
+		if feed.Url == url {
+			return true
+		}
+	}
+
+	return false
 }
 
 func GetFeedsCount() int {

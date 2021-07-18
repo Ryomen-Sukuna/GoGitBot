@@ -29,6 +29,11 @@ func add(b *gotgbot.Bot, c *ext.Context) error {
 		return nil
 	}
 
+	if feeds.HasFeed(c.EffectiveChat.Id, url) {
+		c.Message.Reply(b, "You already have this feed.", nil)
+		return nil
+	}
+
 	err = feeds.AddFeed(feeds.Feed{ChatId: c.EffectiveChat.Id, Url: url})
 	if err != nil {
 		c.Message.Reply(b, "An error occurred adding the feed: "+err.Error(), nil)
