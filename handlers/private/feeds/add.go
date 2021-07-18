@@ -11,8 +11,8 @@ import (
 )
 
 func add(b *gotgbot.Bot, c *ext.Context) error {
-	if feeds.HasFeed(c.EffectiveChat.Id) {
-		c.Message.Reply(b, "You already have a feed.", nil)
+	if feeds.HasEnoughFeeds(c.EffectiveChat.Id) {
+		c.Message.Reply(b, "You can't have more feeds.", nil)
 		return nil
 	}
 
