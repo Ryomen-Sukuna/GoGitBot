@@ -2,6 +2,8 @@ package feed
 
 import (
 	"fmt"
+	"github.com/xeonx/timeago"
+	"html"
 	"time"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
@@ -12,6 +14,16 @@ import (
 )
 
 const DELAY = time.Minute * 2
+
+func parseTime(t string) string {
+	parsed, err := time.Parse(time.RFC3339, t)
+
+	if err != nil {
+		return t
+	}
+
+	return timeago.English.Format(parsed)
+}
 
 func feedWorker(b *gotgbot.Bot) {
 	fp := gofeed.NewParser()
@@ -44,15 +56,14 @@ func feedWorker(b *gotgbot.Bot) {
 
 			lastTitle = feed.Items[0].Title
 
-			text := fmt.Sprintf("<b>Title</b>: <a href=\"%s\">%s</a>\n", feed.Items[0].Link, feed.Items[0].Title) +
-				fmt.Sprintf("<b>Author</b>: %s", feed.Items[0].Authors[0].Name)
+			text := fmt.Sprintf("<b>Title</b>: <a href=\"%s\">%s</a>\n", feed.Items[0].Link, html.EscapeString(feed.Items[0].Title)) +
+				fmt.Sprintf("<b>Author</b>: <a href=\"https://github.com/%s\">%s</a>", feed.Items[0].Authors[0], html.EscapeString(feed.Items[0].Authors[0].Name))
 
 			if feed.Items[0].Authors[0].Email != "" {
-				text += fmt.Sprintf(" &lt;%s&gt;", feed.Items[0].Authors[0].Name)
+				text += fmt.Sprintf(" &lt;%s&gt;", html.EscapeString(feed.Items[0].Authors[0].Email))
 			}
 
-			text += "\n" + fmt.Sprintf("<b>Published</b>: <code>%s</code>\n", feed.Items[0].Published) +
-				fmt.Sprintf("<b>Last updated</b>: <code>%s</code>", feed.Items[0].Updated)
+			text += "\n" + fmt.Sprintf(parseTime(feed.Items[0].Published))
 
 			b.SendMessage(chatId, text, &gotgbot.SendMessageOpts{ParseMode: "HTML", DisableWebPagePreview: true})
 		}()
