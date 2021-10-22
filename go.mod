@@ -1,4 +1,4 @@
-module FeedsBot
+module github.com/rojserbest/GitHubFeedsBot
 
 go 1.16
 
