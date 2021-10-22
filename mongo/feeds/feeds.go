@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 
-	mongo2 "FeedsBot/mongo"
+	mongo2 "github.com/rojserbest/GitHubFeedsBot/mongo"
 )
 
 const MAX_FEEDS = 5

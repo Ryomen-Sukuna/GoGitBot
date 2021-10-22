@@ -5,7 +5,7 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"
 
-	"FeedsBot/handlers/private/feeds"
+	"github.com/rojserbest/GitHubFeedsBot/handlers/private/feeds"
 )
 
 func AddHandlers(dp *ext.Dispatcher) {

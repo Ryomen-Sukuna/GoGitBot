@@ -7,7 +7,7 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 
-	"FeedsBot/mongo/feeds"
+	"github.com/rojserbest/GitHubFeedsBot/mongo/feeds"
 )
 
 func add(b *gotgbot.Bot, c *ext.Context) error {

@@ -3,7 +3,7 @@ package workers
 import (
 	"github.com/PaulSonOfLars/gotgbot/v2"
 
-	"FeedsBot/workers/feed"
+	"github.com/rojserbest/GitHubFeedsBot/workers/feed"
 )
 
 func StartWorkers(b *gotgbot.Bot) {

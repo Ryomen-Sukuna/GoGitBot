@@ -7,7 +7,7 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/mmcdole/gofeed"
 
-	"FeedsBot/mongo/feeds"
+	"github.com/rojserbest/GitHubFeedsBot/mongo/feeds"
 )
 
 const DELAY = time.Minute * 2

@@ -9,8 +9,8 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/joho/godotenv"
 
-	"FeedsBot/handlers"
-	"FeedsBot/workers"
+	"github.com/rojserbest/GitHubFeedsBot/handlers"
+	"github.com/rojserbest/GitHubFeedsBot/workers"
 )
 
 func main() {
