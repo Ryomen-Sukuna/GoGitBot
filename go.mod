@@ -1,4 +1,4 @@
-module github.com/rojserbest/GitHubFeedsBot
+module github.com/rojserbest/GitHubFeedBot
 
 go 1.16
 
@@ -14,4 +14,6 @@ require (
 	go.mongodb.org/mongo-driver v1.7.3
 	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
 	golang.org/x/text v0.3.7 // indirect
+	gorm.io/driver/sqlite v1.1.6 // indirect
+	gorm.io/gorm v1.21.16 // indirect
 )

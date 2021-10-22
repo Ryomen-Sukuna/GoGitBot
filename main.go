@@ -9,8 +9,7 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/joho/godotenv"
 
-	"github.com/rojserbest/GitHubFeedsBot/handlers"
-	"github.com/rojserbest/GitHubFeedsBot/workers"
+	"github.com/rojserbest/GitHubFeedBot/workers"
 )
 
 func main() {
@@ -20,7 +19,7 @@ func main() {
 	}
 
 	b, err := gotgbot.NewBot(
-		os.Getenv("TOKEN"),
+		os.Getenv("BOT_TOKEN"),
 		&gotgbot.BotOpts{
 			Client:      http.Client{},
 			GetTimeout:  gotgbot.DefaultGetTimeout,
@@ -32,10 +31,8 @@ func main() {
 	}
 
 	updater := ext.NewUpdater(nil)
-	dispatcher := updater.Dispatcher
 
 	workers.StartWorkers(b)
-	handlers.AddHandlers(dispatcher)
 
 	err = updater.StartPolling(b, &ext.PollingOpts{DropPendingUpdates: true})
 	if err != nil {
