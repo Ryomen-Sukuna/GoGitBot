@@ -12,13 +12,8 @@ Rename `sample.env` to `.env` and fill in the required vars:
 - `FEED_URL`: Your Feed URL
 -----------------
 
-## Deploy on Heroku:
-If you want to deploy this app on Heroku, there's a one-click setup for that. Click below, fill up the form and hit **Deploy App**.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Ryomen-Sukuna/GoGitBot)
-
 ## Credits 📍
-All Credits to [roj1512](https://github.com/roj1512)
+All Credits to [roj1512](https://github.com/roj1512) - [GithubFeedBot](https://github.com/roj1512/GitHubFeedBot)
 
 ## **License**
 [![MIT](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png)](https://opensource.org/licenses/MIT)
