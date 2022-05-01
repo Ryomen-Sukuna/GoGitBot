@@ -1,34 +1,34 @@
 {
-  "name": "Go Github Feed Bot",
-  "description": "Golang based telegram bot that notifies you about GitHub activities on Telegram.",
-  "keywords": [
-    "telegram",
-    "github",
-    "golang tg bot",
-  ],
-  "repository": "https://github.com/Ryomen-Sukuna/GithubFeedBot",
-  "website": "https://t.me/Anomaliii",
-  "success_url": "https://t.me/Anomaliii",
-  "env": {
-    "BOT_TOKEN": {
-      "description": "Bot Token, Get It From @BotFather.",
-      "value": "",
-      "required": true
+    "name": "Go Github Feed Bot",
+    "description": "Golang based telegram bot that notifies you about GitHub activities on Telegram.",
+    "keywords": [
+      "telegram",
+      "github",
+      "golang tg bot",
+    ],
+    "repository": "https://github.com/Ryomen-Sukuna/GithubFeedBot",
+    "website": "https://t.me/Anomaliii",
+    "success_url": "https://t.me/Anomaliii",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Bot Token, Get It From @BotFather.",
+            "value": "",
+            "required": true
+        },
+        "CHAT_ID": {
+            "description": "Your Chat ID value",
+            "value": "",
+            "required": true
+        },
+        "FEED_URL": {
+            "description": "Your Feed URL value",
+            "value": "",
+            "required": true
+        }
     },
-    "CHAT_ID": {
-      "description": "Your Chat ID",
-      "value": "",
-      "required": true
-    },
-    "FEED_URL": {
-      "description": "Your Feed URL",
-      "value": "",
-      "required": true
-    }
-  },
-  "buildpacks": [
-    {
-      "url": "heroku/go"
-    }
-  ]
+    "buildpacks": [
+        {
+            "url": "heroku/go"
+        }
+    ]
 }
