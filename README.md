@@ -6,7 +6,7 @@ A simple bot that notifies you about GitHub activities on Telegram. Inspired by 
 -----------------
 `go get -u github.com/Ryomen-Sukuna/GoGitBot`
 
-Rename `sample.env` to `.env` and fill in the required vars:
+Rename `example.env` to `.env` and fill in the required vars:
 - `BOT_TOKEN`: Your Bot Token
 - `CHAT_ID`: Your Chat ID
 - `FEED_URL`: Your Feed URL
