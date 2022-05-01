@@ -1,10 +1,11 @@
 {
     "name": "Go Github Feed Bot",
-    "description": "Golang based telegram bot that notifies you about GitHub activities on Telegram.",
+    "description": "Golang based telegram bot that notifies you about GitHub activities.",
     "keywords": [
-      "telegram",
-      "github",
-      "golang tg bot",
+        "telegram",
+        "telegram-bot",
+        "github",
+        "golang tg bot",
     ],
     "repository": "https://github.com/Ryomen-Sukuna/GithubFeedBot",
     "website": "https://t.me/Anomaliii",
