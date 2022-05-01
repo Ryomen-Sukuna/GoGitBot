@@ -56,8 +56,16 @@ func feedWorker(b *gotgbot.Bot) {
 
 			lastTitle = feed.Items[0].Title
 
-			text := fmt.Sprintf("<b>Title</b>: <a href=\"%s\">%s</a>\n", feed.Items[0].Link, html.EscapeString(feed.Items[0].Title)) +
-				fmt.Sprintf("<b>Author</b>: <a href=\"https://github.com/%s\">%s</a>", feed.Items[0].Authors[0], html.EscapeString(feed.Items[0].Authors[0].Name))
+			text := fmt.Sprintf(
+				"<b>Title</b>: <a href=\"%s\">%s</a>\n",
+				feed.Items[0].Link,
+				html.EscapeString(feed.Items[0].Title),
+			) +
+				fmt.Sprintf(
+					"<b>Author</b>: <a href=\"https://github.com/%s\">%s</a>",
+					feed.Items[0].Authors[0],
+					html.EscapeString(feed.Items[0].Authors[0].Name),
+				)
 
 			if feed.Items[0].Authors[0].Email != "" {
 				text += fmt.Sprintf(" &lt;%s&gt;", html.EscapeString(feed.Items[0].Authors[0].Email))
@@ -65,7 +73,14 @@ func feedWorker(b *gotgbot.Bot) {
 
 			text += "\n" + fmt.Sprintf(parseTime(feed.Items[0].Published))
 
-			b.SendMessage(chatId, text, &gotgbot.SendMessageOpts{ParseMode: "HTML", DisableWebPagePreview: true})
+			b.SendMessage(
+				chatId,
+				text,
+				&gotgbot.SendMessageOpts{
+					ParseMode:             "HTML",
+					DisableWebPagePreview: true,
+				},
+			)
 		}()
 
 		time.Sleep(DELAY)

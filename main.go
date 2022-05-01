@@ -9,7 +9,7 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/joho/godotenv"
 
-	"github.com/roj1512/GitHubFeedBot/workers"
+	"github.com/Ryomen-Sukuna/GoGitBot/workers"
 )
 
 func main() {

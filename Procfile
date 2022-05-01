@@ -1,1 +1,1 @@
-worker: bin/GithubFeedBot
+worker: bin/GoGitBot
