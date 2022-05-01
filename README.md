@@ -15,9 +15,7 @@ Rename `sample.env` to `.env` and fill in the required vars:
 ## Deploy on Heroku:
 If you want to deploy this app on Heroku, there's a one-click setup for that. Click below, fill up the form and hit **Deploy App**.
 
-<p>
-  <a href="https://heroku.com/deploy?template=https://github.com/Ryomen-Sukuna/GithubFeedBot"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a>
-</p>
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Ryomen-Sukuna/GithubFeedBot)
 
 ## Credits 📍
 All Credits to [roj1512](https://github.com/roj1512)
