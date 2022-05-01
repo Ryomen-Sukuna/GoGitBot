@@ -11,18 +11,18 @@
     "website": "https://t.me/Anomaliii",
     "success_url": "https://t.me/Anomaliii",
     "env": {
-        "BOT_TOKEN": {
+        "TOKEN": {
             "description": "Bot Token, Get It From @BotFather.",
             "value": "",
             "required": true
         },
-        "CHAT_ID": {
-            "description": "Your Chat ID value",
+        "MONGO": {
+            "description": "Your MongoDB value",
             "value": "",
             "required": true
         },
-        "FEED_URL": {
-            "description": "Your Feed URL value",
+        "DB_NAME": {
+            "description": "Your MongoDB name value",
             "value": "",
             "required": true
         }

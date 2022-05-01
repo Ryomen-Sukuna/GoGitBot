@@ -2,86 +2,69 @@ package feed
 
 import (
 	"fmt"
-	"github.com/xeonx/timeago"
-	"html"
 	"time"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/mmcdole/gofeed"
-	"log"
-	"os"
-	"strconv"
+
+	"github.com/Ryomen-Sukuna/GoGitBot/mongo/feeds"
 )
 
 const DELAY = time.Minute * 2
 
-func parseTime(t string) string {
-	parsed, err := time.Parse(time.RFC3339, t)
-
-	if err != nil {
-		return t
-	}
-
-	return timeago.English.Format(parsed)
-}
-
 func feedWorker(b *gotgbot.Bot) {
 	fp := gofeed.NewParser()
 
-	chatIdString := os.Getenv("CHAT_ID")
-	chatIdInt, err := strconv.Atoi(chatIdString)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	chatId := int64(chatIdInt)
-	url := os.Getenv("FEED_URL")
-	lastTitle := ""
-
 	for {
+		feeds2, err := feeds.GetFeeds()
+
 		if err != nil {
 			time.Sleep(DELAY)
 			continue
 		}
 
-		go func() {
-			feed, err := fp.ParseURL(url)
-			if err != nil {
-				return
-			}
+		for _, feed := range feeds2 {
+			go func(feed feeds.Feed) {
+				feed2, err := fp.ParseURL(feed.Url)
+				if err != nil {
+					return
+				}
 
-			if feed.Items[0].Title == "" || feed.Items[0].Title == lastTitle {
-				return
-			}
+				if feed2.Items[0].Title == "" || feed2.Items[0].Title == feed.LastTitle {
+					return
+				}
 
-			lastTitle = feed.Items[0].Title
+				feeds.UpdateFeed(feed.ChatId, feed.Url, feed2.Items[0].Title)
 
-			text := fmt.Sprintf(
-				"<b>Title</b>: <a href=\"%s\">%s</a>\n",
-				feed.Items[0].Link,
-				html.EscapeString(feed.Items[0].Title),
-			) +
-				fmt.Sprintf(
-					"<b>Author</b>: <a href=\"https://github.com/%s\">%s</a>",
-					feed.Items[0].Authors[0],
-					html.EscapeString(feed.Items[0].Authors[0].Name),
+				text := fmt.Sprintf(
+					"<b>Title</b>: <a href=\"%s\">%s</a>\n",
+					feed2.Items[0].Link,
+					feed2.Items[0].Title) + fmt.Sprintf(
+					"<b>Author</b>: %s", feed2.Items[0].Author.Name,
 				)
 
-			if feed.Items[0].Authors[0].Email != "" {
-				text += fmt.Sprintf(" &lt;%s&gt;", html.EscapeString(feed.Items[0].Authors[0].Email))
-			}
+				if feed2.Items[0].Author.Email != "" {
+					text += fmt.Sprintf(
+						" &lt;%s&gt;",
+						feed2.Items[0].Author.Email,
+					)
+				}
 
-			text += "\n" + fmt.Sprintf(parseTime(feed.Items[0].Published))
+				text += "\n" + fmt.Sprintf(
+					"<b>Published</b>: <code>%s</code>\n", feed2.Items[0].Published) + fmt.Sprintf(
+					"<b>Last updated</b>: <code>%s</code>", feed2.Items[0].Updated,
+				)
 
-			b.SendMessage(
-				chatId,
-				text,
-				&gotgbot.SendMessageOpts{
-					ParseMode:             "HTML",
-					DisableWebPagePreview: true,
-				},
-			)
-		}()
+				b.SendMessage(
+					feed.ChatId,
+					text,
+					&gotgbot.SendMessageOpts{
+						ParseMode:             "HTML",
+						DisableWebPagePreview: true,
+					},
+				)
+			}(feed)
+		}
 
 		time.Sleep(DELAY)
 	}
