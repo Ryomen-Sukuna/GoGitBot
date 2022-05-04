@@ -7,13 +7,13 @@ A simple bot that notifies you about GitHub activities on Telegram. Inspired by 
 `go get -u github.com/Ryomen-Sukuna/GoGitBot`
 
 Create `.env` and fill in the required vars:
-- `BOT_TOKEN`: Your Bot Token
-- `CHAT_ID`: Your Chat ID
-- `FEED_URL`: Your Feed URL
+- `TOKEN`: Your Bot Token, Get It From @BotFather.
+- `MONGO`: Your MongoDB value.
+- `DB_NAME`: Your MongoDB name value.
 -----------------
 
 ## Credits 📍
-All Credits to [roj1512](https://github.com/roj1512) - [GithubFeedBot](https://github.com/roj1512/GitHubFeedBot)
+- [roj1512](https://github.com/roj1512) - [GithubFeedBot](https://github.com/roj1512/GitHubFeedBot)
 
 ## **License**
 [![MIT](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png)](https://opensource.org/licenses/MIT)
