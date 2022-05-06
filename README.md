@@ -14,6 +14,7 @@ Create `.env` and fill in the required vars:
 
 ## Credits 📍
 - [roj1512](https://github.com/roj1512) - [GithubFeedBot](https://github.com/roj1512/GitHubFeedBot)
+- [DivideProjects](https://github.com/DivideProjects) - [GoLangTgBot](https://github.com/DivideProjects/GoLangTgBot)
 
 ## **License**
 [![MIT](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png)](https://opensource.org/licenses/MIT)
