@@ -23,9 +23,10 @@ func main() {
 	b, err := gotgbot.NewBot(
 		os.Getenv("TOKEN"),
 		&gotgbot.BotOpts{
-			Client:      http.Client{},
-			GetTimeout:  gotgbot.DefaultGetTimeout,
-			PostTimeout: gotgbot.DefaultPostTimeout,
+			Client: http.Client{},
+			DefaultRequestOpts: &gotgbot.RequestOpts{
+				Timeout: gotgbot.DefaultTimeout,
+			},
 		},
 	)
 	if err != nil {
